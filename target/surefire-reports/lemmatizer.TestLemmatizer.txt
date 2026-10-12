@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: lemmatizer.TestLemmatizer
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.363 s -- in lemmatizer.TestLemmatizer
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.555 s -- in lemmatizer.TestLemmatizer

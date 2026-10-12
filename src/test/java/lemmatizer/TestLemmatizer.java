@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 
 import docxToTextConverter.DocxToTextConverter;
-import opennlp.tools.lemmatizer.DictionaryLemmatizer;
 import opennlp.tools.lemmatizer.LemmatizerME;
 import opennlp.tools.lemmatizer.LemmatizerModel;
 import opennlp.tools.postag.POSModel;
