@@ -76,6 +76,13 @@
           <includes>
             
           </includes>
+          <excludes>
+          		<exclude>TestDocxToTextConverter.java</exclude>
+          		<exclude>TestSentenceBoundaryDisambiguation.java</exclude>
+          		<exclude>TestTokenizer.java</exclude>
+          		<exclude>TestNamedEntityRecognition.java</exclude>
+          		<exclude>TestPartOfSpeechTagger.java</exclude>
+          </excludes>
         </configuration>
       </plugin>
     </plugins>

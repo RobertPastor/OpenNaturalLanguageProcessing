@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="sentenceDetection.TestSentenceBoundaryDisambiguation" time="0.167" tests="1" errors="0" skipped="0" failures="0" flakes="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="sentenceDetection.TestSentenceBoundaryDisambiguation" time="0.207" tests="1" errors="0" skipped="0" failures="0" flakes="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="FR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Zulu\zulu-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\rober\AppData\Local\Temp\surefire13555902098457109080\surefirebooter-20261011234951492_3.jar C:\Users\rober\AppData\Local\Temp\surefire13555902098457109080 2026-10-11T23-49-51_109-jvmRun1 surefire-20261011234951492_1tmp surefire_0-20261011234951492_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\rober\AppData\Local\Temp\surefire12819924059202734190\surefirebooter-20261012101139953_3.jar C:\Users\rober\AppData\Local\Temp\surefire12819924059202734190 2026-10-12T10-11-39_448-jvmRun1 surefire-20261012101139953_1tmp surefire_0-20261012101139953_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\rober\eclipse-2025-09\eclipse-jee-2025-09-R-win32-x86_64\eclipse-workspace\Apache-Open-NLP\target\test-classes;C:\Users\rober\eclipse-2025-09\eclipse-jee-2025-09-R-win32-x86_64\eclipse-workspace\Apache-Open-NLP\target\classes;C:\Users\rober\.m2\repository\org\apache\poi\poi\5.5.1\poi-5.5.1.jar;C:\Users\rober\.m2\repository\commons-codec\commons-codec\1.20.0\commons-codec-1.20.0.jar;C:\Users\rober\.m2\repository\org\apache\commons\commons-collections4\4.5.0\commons-collections4-4.5.0.jar;C:\Users\rober\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\rober\.m2\repository\commons-io\commons-io\2.21.0\commons-io-2.21.0.jar;C:\Users\rober\.m2\repository\com\zaxxer\SparseBitSet\1.3\SparseBitSet-1.3.jar;C:\Users\rober\.m2\repository\org\apache\poi\poi-ooxml\5.5.1\poi-ooxml-5.5.1.jar;C:\Users\rober\.m2\repository\org\apache\poi\poi-ooxml-lite\5.5.1\poi-ooxml-lite-5.5.1.jar;C:\Users\rober\.m2\repository\org\apache\xmlbeans\xmlbeans\5.3.0\xmlbeans-5.3.0.jar;C:\Users\rober\.m2\repository\org\apache\commons\commons-compress\1.28.0\commons-compress-1.28.0.jar;C:\Users\rober\.m2\repository\org\apache\commons\commons-lang3\3.18.0\commons-lang3-3.18.0.jar;C:\Users\rober\.m2\repository\com\github\virtuald\curvesapi\1.08\curvesapi-1.08.jar;C:\Users\rober\.m2\repository\org\apache\opennlp\opennlp-runtime\3.0.0-M6\opennlp-runtime-3.0.0-M6.jar;C:\Users\rober\.m2\repository\org\apache\opennlp\opennlp-api\3.0.0-M6\opennlp-api-3.0.0-M6.jar;C:\Users\rober\.m2\repository\org\apache\opennlp\opennlp-ml-commons\3.0.0-M6\opennlp-ml-commons-3.0.0-M6.jar;C:\Users\rober\.m2\repository\org\apache\opennlp\opennlp-ml-maxent\3.0.0-M6\opennlp-ml-maxent-3.0.0-M6.jar;C:\Users\rober\.m2\repository\org\slf4j\slf4j-api\2.0.19\slf4j-api-2.0.19.jar;C:\Users\rober\.m2\repository\org\apache\opennlp\opennlp-model-resolver\3.0.0-M6\opennlp-model-resolver-3.0.0-M6.jar;C:\Users\rober\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.1\junit-jupiter-engine-5.9.1.jar;C:\Users\rober\.m2\repository\org\junit\platform\junit-platform-engine\1.9.1\junit-platform-engine-1.9.1.jar;C:\Users\rober\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\rober\.m2\repository\org\junit\platform\junit-platform-commons\1.9.1\junit-platform-commons-1.9.1.jar;C:\Users\rober\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.1\junit-jupiter-api-5.9.1.jar;C:\Users\rober\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\rober\.m2\repository\org\apache\logging\log4j\log4j-core\2.26.1\log4j-core-2.26.1.jar;C:\Users\rober\.m2\repository\org\apache\logging\log4j\log4j-api\2.26.1\log4j-api-2.26.1.jar"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\rober\AppData\Local\Temp\surefire13555902098457109080\surefirebooter-20261011234951492_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\rober\AppData\Local\Temp\surefire12819924059202734190\surefirebooter-20261012101139953_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.1+12-LTS"/>
@@ -59,7 +59,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="givenFrenchModel_whenDetect_thenSentencesAreDetected" classname="sentenceDetection.TestSentenceBoundaryDisambiguation" time="0.162">
+  <testcase name="givenFrenchModel_whenDetect_thenSentencesAreDetected" classname="sentenceDetection.TestSentenceBoundaryDisambiguation" time="0.202">
     <system-out><![CDATA[Cette année encore, Maman avait réservé un emplacement au camping Paradis au bord du lac.
 Il y avait là des familles qui s’entendaient bien, se retrouvaient autour d'un apéritif, jouaient aux boules, papotaient tard dans la nuit.
 En arrivant, je me mettais immédiatement à la recherche de mon ami Georges.
@@ -154,9 +154,9 @@ Le projet a lentement pris forme dans l'esprit d'un nombre croissant d’archéo
 Ça ne se ferait pas au détriment de l'environnement.
 S'il y avait une pierre précieuse, il fallait la rendre à son légitime propriétaire, l'exposer quelque part dans un musée et que toute folie humaine se tarisse à jamais.
 ]]></system-out>
-    <system-err><![CDATA[oct. 11, 2026 11:49:57 PM sentenceDetection.TestSentenceBoundaryDisambiguation givenFrenchModel_whenDetect_thenSentencesAreDetected
+    <system-err><![CDATA[oct. 12, 2026 10:11:44 AM sentenceDetection.TestSentenceBoundaryDisambiguation givenFrenchModel_whenDetect_thenSentencesAreDetected
 INFOS: --- Running a sentence detector tool ---
-oct. 11, 2026 11:49:57 PM docxToTextConverter.DocxToTextConverter convertDocxToText
+oct. 12, 2026 10:11:44 AM docxToTextConverter.DocxToTextConverter convertDocxToText
 INFOS: --- word to text converter ---
 ]]></system-err>
   </testcase>

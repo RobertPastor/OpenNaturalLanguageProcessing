@@ -22,7 +22,7 @@ public class TestPartOfSpeechTagger {
 	@Test
 	public void givenFrenchModel_then_PartOfSpeechTagger() throws Exception {
 
-		logger.info("--- Running a Part Of Speed Tagger ---");
+		logger.info("--- Running a Part Of Speech Tagger ---");
 		
 		try {
 
