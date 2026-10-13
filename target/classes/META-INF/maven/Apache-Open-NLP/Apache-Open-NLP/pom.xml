@@ -63,6 +63,14 @@
 	    <artifactId>log4j-api</artifactId>
 	    <version>2.26.1</version>
 	</dependency>
+	
+	<!-- Source: https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-classic</artifactId>
+	    <version>1.6.5</version>
+	    <scope>compile</scope>
+	</dependency>
 
   </dependencies>
   
@@ -80,7 +88,6 @@
           		<exclude>TestDocxToTextConverter.java</exclude>
           		<exclude>TestSentenceBoundaryDisambiguation.java</exclude>
           		<exclude>TestTokenizer.java</exclude>
-          		<exclude>TestNamedEntityRecognition.java</exclude>
           		<exclude>TestPartOfSpeechTagger.java</exclude>
           </excludes>
         </configuration>
