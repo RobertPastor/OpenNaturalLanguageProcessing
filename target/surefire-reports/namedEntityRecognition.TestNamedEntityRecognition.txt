@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: namedEntityRecognition.TestNamedEntityRecognition
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.230 s <<< FAILURE! -- in namedEntityRecognition.TestNamedEntityRecognition
-namedEntityRecognition.TestNamedEntityRecognition.givenFrenchModel_whenDetectTokens_thenNER -- Time elapsed: 1.211 s <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.082 s <<< FAILURE! -- in namedEntityRecognition.TestNamedEntityRecognition
+namedEntityRecognition.TestNamedEntityRecognition.givenFrenchModel_whenDetectTokens_thenNER -- Time elapsed: 1.072 s <<< ERROR!
 java.lang.IllegalArgumentException: [OPENNLP-1174] - Classic configuration format is no longer supported!
 	at opennlp.tools.util.featuregen.GeneratorFactory.createGenerator(GeneratorFactory.java:212)
 	at opennlp.tools.util.featuregen.GeneratorFactory.create(GeneratorFactory.java:110)

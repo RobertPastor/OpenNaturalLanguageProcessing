@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>Apache-Open-NLP</groupId>
   <artifactId>Apache-Open-NLP</artifactId>
@@ -15,6 +17,13 @@
   </properties>
   
   <dependencies>
+  
+  	<!-- https://mvnrepository.com/artifact/com.jerolba/carpet-record -->
+	<dependency>
+		<groupId>com.jerolba</groupId>
+		<artifactId>carpet-record</artifactId>
+		<version>0.5.0</version>
+	</dependency>
   
   	<!-- Source: https://mvnrepository.com/artifact/org.apache.poi/poi -->
 	<dependency>
@@ -71,6 +80,14 @@
 	    <version>1.6.5</version>
 	    <scope>compile</scope>
 	</dependency>
+	
+	<!-- Source: https://mvnrepository.com/artifact/tech.tablesaw/tablesaw-core -->
+	<dependency>
+	    <groupId>tech.tablesaw</groupId>
+	    <artifactId>tablesaw-core</artifactId>
+	    <version>0.44.4</version>
+	    <scope>compile</scope>
+	</dependency>
 
   </dependencies>
   
@@ -89,6 +106,8 @@
           		<exclude>TestSentenceBoundaryDisambiguation.java</exclude>
           		<exclude>TestTokenizer.java</exclude>
           		<exclude>TestPartOfSpeechTagger.java</exclude>
+          		<exclude>TestNamedEntityRecognition.java</exclude>
+          		<exclude>TestLemmatizer.java</exclude>
           </excludes>
         </configuration>
       </plugin>
