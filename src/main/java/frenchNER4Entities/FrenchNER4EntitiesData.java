@@ -2,17 +2,19 @@ package frenchNER4Entities;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Iterator;
-
 
 import com.jerolba.carpet.CarpetReader;
 
 import frenchNER4Entities.FrenchNER4EntitiesDataSchema.FrenchNer4EntitiesDataRecord;
 
 public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
+	
+	/**
+	 * source https://huggingface.co/datasets/CATIE-AQ/frenchNER_4entities/tree/main/data
+	 */
 
 	String frenchNERinputFileName = "";
 	Path frenchNERinputFilePath = null;
@@ -52,7 +54,7 @@ public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
 			int count = 0;
 			while (iterator.hasNext() && ( count < 100) ) {
 				count = count + 1;
-				FrenchNer4EntitiesDataRecord record = iterator.next();
+				//FrenchNer4EntitiesDataRecord record = iterator.next();
 				System.out.println(" ---------------- " + String.valueOf(count) + " ------------ " );
 
 				//System.out.println(record.tokens());

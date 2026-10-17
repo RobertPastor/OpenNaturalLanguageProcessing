@@ -6,9 +6,9 @@ import java.util.logging.Logger;
 import org.junit.jupiter.api.Test;
 
 
-public class TestFrenchNer4Entities {
+public class TestReadFrenchNer4Entities {
 
-	private static final Logger logger = Logger.getLogger(TestFrenchNer4Entities.class.getName());
+	private static final Logger logger = Logger.getLogger(TestReadFrenchNer4Entities.class.getName());
 
 	
 	@Test
