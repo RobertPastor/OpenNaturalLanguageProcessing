@@ -58,14 +58,18 @@ public class AnnotatedTaggedNerEntities {
 					logger.info( " it is a normal token -> add it to the list ");
 					annotatedSentenceTokensList.add( sentenceToken );
 					previousNerTagValue = sentenceNerTags[i];
-					// clean the annotated token that is suppose to fille with the START END tacgs
+					// clean the annotated token that is suppose to fill with the START END tacgs
 					annotatedToken = "";
 					i = i + 1;
 				} else {
 					// current NER Tag value different from 0
 					logger.info( " first token must be annoted ");
 					annotatedToken = OpenNlpNerTagsGenerator.generateStartTag(NerTagAsInt);
-					annotatedToken += sentenceToken + " ";
+					if ( sentenceToken.endsWith("'") == false ) {
+						annotatedToken += sentenceToken + " ";
+					} else {
+						annotatedToken += sentenceToken;
+					}
 					// insertion will occur later in the next loop step
 					previousNerTagValue = sentenceNerTags[i];
 					i = i + 1;
@@ -97,7 +101,11 @@ public class AnnotatedTaggedNerEntities {
 						logger.info( " previous NER Tag value was 0 -> no need for an END Tag ");
 
 						annotatedToken = OpenNlpNerTagsGenerator.generateStartTag(NerTagAsInt);
-						annotatedToken += sentenceToken + " ";
+						if ( sentenceToken.endsWith("'") == false ) {
+							annotatedToken += sentenceToken + " ";
+						} else {
+							annotatedToken += sentenceToken;
+						}
 						// insertion will occur later in the next loop step
 						previousNerTagValue = sentenceNerTags[i];
 						i = i + 1;
@@ -124,7 +132,11 @@ public class AnnotatedTaggedNerEntities {
 								
 							} else {
 								annotatedToken = OpenNlpNerTagsGenerator.generateStartTag(NerTagAsInt);
-								annotatedToken += sentenceToken + " ";
+								if ( sentenceToken.endsWith("'") == false ) {
+									annotatedToken += sentenceToken + " ";
+								} else {
+									annotatedToken += sentenceToken;
+								}
 								// insertion will occur later in the next loop step
 								previousNerTagValue = sentenceNerTags[i];
 								i = i + 1 ;

@@ -16,8 +16,9 @@ public class TestReadFrenchNer4Entities {
 
 		logger.info("--- French NER 4 Entities carpet reader  - start ---");
 
-		String fileName = "train-00000-of-00001.parquet";
-		FrenchNER4EntitiesData frenchNER4EntitiesData = new FrenchNER4EntitiesData (fileName);
+		String inputFileName = "train-00000-of-00001.parquet";
+		String outputFileName = "train-NER4Entities-input.txt";
+		FrenchNER4EntitiesData frenchNER4EntitiesData = new FrenchNER4EntitiesData (inputFileName , outputFileName);
 		frenchNER4EntitiesData.readParquet();
 		
 		logger.info("--- French NER 4 Entities carpet reader  - end ---");
