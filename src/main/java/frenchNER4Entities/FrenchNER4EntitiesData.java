@@ -71,7 +71,7 @@ public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
 			Iterator<FrenchNer4EntitiesDataRecord> iterator = ((CarpetReader<FrenchNer4EntitiesDataRecord>) carpetReader).iterator();
 
 			int count = 0;
-			while (iterator.hasNext() && ( count < 100000 ) ) {
+			while (iterator.hasNext() && ( count < 1000000000 ) ) {
 				count = count + 1;
 				FrenchNer4EntitiesDataRecord record = iterator.next();
 				System.out.println(" ---------------- " + String.valueOf(count) + " ------------ " );
