@@ -43,21 +43,22 @@ public class TestNamedEntityRecognition {
 			TokenizerME tokenizerME = new TokenizerME(tokenizerModel);
 	
 			// Named Entity Recognition
-			InputStream nameEntityRecogIn = getClass().getResourceAsStream("/models/nerc-fr.bin");
+			InputStream nameEntityRecogIn = getClass().getResourceAsStream("/models/fr-ner-train-person.bin");
 			TokenNameFinderModel nameFinderModel = new TokenNameFinderModel(nameEntityRecogIn);
 			NameFinderME nameFinderME = new NameFinderME(nameFinderModel);
 			
 			//List<Span> spans = Arrays.asList(nameFinderME.find(tokens));
 			
 			for (int i = 0; i < sentences.length; i++) {
-				System.out.println(" ------------ ");
+				logger.info(" ------------ " + String.valueOf(i) + " ------------ ");
 				System.out.println( sentences[i] );
-				
 				String[] tokens = tokenizerME.tokenize(sentences[i]);
 				
 				Span nameSpans[] = nameFinderME.find( tokens );
 				for ( int j = 0 ; j < nameSpans.length ; j++ ) {
-					System.out.println( nameSpans[j] );
+					logger.info(" ================== " + String.valueOf(j) + " ================== ");
+					logger.info( tokens[nameSpans[j].getStart()]  );
+					logger.info(  nameSpans[j].getType() );
 				}
 			}
 			nameFinderME.clearAdaptiveData();

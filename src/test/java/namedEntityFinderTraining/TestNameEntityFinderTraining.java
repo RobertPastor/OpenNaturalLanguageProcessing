@@ -51,10 +51,10 @@ public class TestNameEntityFinderTraining {
 			ObjectStream<String> lineStream = new PlainTextByLineStream( inputStreamFactory , StandardCharsets.UTF_8);
 				
 			ObjectStream<NameSample> sampleStream = new NameSampleDataStream(lineStream);
-			TokenNameFinderModel trainedModel = NameFinderME.train("eng", "person", sampleStream, TrainingParameters.defaultParams(), tokenNameFinderFactory);
+			TokenNameFinderModel trainedModel = NameFinderME.train("fr", "person", sampleStream, TrainingParameters.defaultParams(), tokenNameFinderFactory);
 			
 			// output trained file
-			String frenchNERoutputFileName = "fr-ner-person.bin";
+			String frenchNERoutputFileName = "fr-ner-train-person.bin";
 			Path frenchNERoutputFilePath = resourceDirectory.resolve(frenchNERoutputFileName);
 			
 			File modelOutputFile = frenchNERoutputFilePath.toFile();
