@@ -33,22 +33,23 @@ public class OpenNlpNerTagsGenerator {
 			break;
 		}
 		// add space between TAG and token value
-		return startTag + " ";
+		// 18-October-2026 - open NLP 3.00 M6 crash when token with ' (article elidé) before START tag
+		return " " + startTag + " ";
 	}
 
 	public static String generateEndTag() {
-		return "<END>";
+		return "<END> ";
 	}
 	private static String generateMiscStartTag() {
-		return "<START:misc>";
+		return "<START:misc> ";
 	}
 	private static String generatePersonStartTag() {
-		return "<START:person>";
+		return "<START:person> ";
 	}
 	private static String generateLocationStartTag() {
-		return "<START:location>";
+		return "<START:location> ";
 	}
 	private static String generateOrganisationStartTag() {
-		return "<START:organization>";
+		return "<START:organization> ";
 	}
 }

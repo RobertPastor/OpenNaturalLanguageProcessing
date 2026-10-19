@@ -21,7 +21,7 @@ public class TestConvertNerToOpenNlp {
 				"383", "numéros", "diffusés", "à", "200000", "exemplaires", ")", 
 				"jouant", "un", "rôle", "important", "dans", "la", "Résistance", "." };
 
-		// 1 person, 2 organisation  , 3 location ,  4 misc
+		// 1 person, 2 organization  , 3 location ,  4 misc
 		Integer[] inputSentenceNerTagsOne = {2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0};
 
 		AnnotatedTaggedNerEntities annotatedTaggedNerEntities = new AnnotatedTaggedNerEntities();
@@ -39,7 +39,7 @@ public class TestConvertNerToOpenNlp {
 		}
 
 		String[] inputSentenceTokensTwo = {
-				"Ses",				"velléités",				"de",				"liberté",
+				"Ses",				"velléités",				"de",				"liberté",  " " ,
 				"le",				"conduiront",				"à",				"s'",
 				"affranchir",				"des",				"textes",				"qu'",
 				"il",				"met",				"en",				"musique",				"au",
@@ -48,7 +48,7 @@ public class TestConvertNerToOpenNlp {
 				"Richard",				"Wagner",				"."		};
 		// NER tag = 1 -> person
 		Integer[] inputSentenceNerTagsTwo = {
-				0,				0,				0,				0,
+				0,				0,				0,				0, 				4 ,
 				0,				0,				0,				0,
 				0,				0,				0,				0,
 				0,				0,				0,				0,				0,

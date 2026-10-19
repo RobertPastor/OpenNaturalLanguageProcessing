@@ -52,7 +52,7 @@ public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
 	 * read the data from a parquet file
 	 * @throws IOException
 	 */
-	public void readParquet( ) throws IOException {
+	public void readCATIE_AQ_NER4EntitiesParquet( ) throws IOException {
 		
 		logger.info("--- read parquet  - start ---");
 		
@@ -71,7 +71,9 @@ public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
 			Iterator<FrenchNer4EntitiesDataRecord> iterator = ((CarpetReader<FrenchNer4EntitiesDataRecord>) carpetReader).iterator();
 
 			int count = 0;
-			while (iterator.hasNext() && ( count < 1000000000 ) ) {
+			int maxCount = 1000000000;
+			maxCount = 10000000;
+			while (iterator.hasNext() && ( count < maxCount ) ) {
 				count = count + 1;
 				FrenchNer4EntitiesDataRecord record = iterator.next();
 				System.out.println(" ---------------- " + String.valueOf(count) + " ------------ " );
@@ -85,8 +87,8 @@ public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
 				// replace ' followed by SPACE
 				annotatedSentenceAsString = annotatedSentenceAsString.replaceAll("' ","'");
 				annotatedSentenceAsString = annotatedSentenceAsString.replaceAll(" ,",",");
-				annotatedSentenceAsString = annotatedSentenceAsString.replaceAll(" .",".");
-				annotatedSentenceAsString = annotatedSentenceAsString.replaceAll("  "," ");
+				//annotatedSentenceAsString = annotatedSentenceAsString.replaceAll(" .",".");
+				//annotatedSentenceAsString = annotatedSentenceAsString.replaceAll("  "," ");
 				byte[] byteArray = annotatedSentenceAsString.getBytes();
 				this.fos.write(byteArray);
 				this.fos.flush();

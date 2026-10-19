@@ -10,7 +10,6 @@ public class TestReadFrenchNer4Entities {
 
 	private static final Logger logger = Logger.getLogger(TestReadFrenchNer4Entities.class.getName());
 
-	
 	@Test
 	public void readFrenchNer4Entities() throws IOException {
 
@@ -19,9 +18,8 @@ public class TestReadFrenchNer4Entities {
 		String inputFileName = "train-00000-of-00001.parquet";
 		String outputFileName = "train-NER4Entities-input.txt";
 		FrenchNER4EntitiesData frenchNER4EntitiesData = new FrenchNER4EntitiesData (inputFileName , outputFileName);
-		frenchNER4EntitiesData.readParquet();
+		frenchNER4EntitiesData.readCATIE_AQ_NER4EntitiesParquet();
 		
 		logger.info("--- French NER 4 Entities carpet reader  - end ---");
-
 	}
 }

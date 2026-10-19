@@ -41,6 +41,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 	    <scope>compile</scope>
 	</dependency>
   
+  	
   	<dependency>
     	<groupId>org.apache.opennlp</groupId>
     	<artifactId>opennlp-runtime</artifactId>
@@ -49,7 +50,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 	
 	<dependency>
 	    <groupId>org.apache.opennlp</groupId>
-	    <artifactId>opennlp-model-resolver</artifactId>
+	    <artifactId>opennlp-api</artifactId>
 	    <version>3.0.0-M6</version>
 	</dependency>
 	
@@ -109,11 +110,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
           		<exclude>TestNamedEntityRecognition.java</exclude>
           		<exclude>TestLemmatizer.java</exclude>
           		<exclude>TestConvertNerToOpenNlp.java</exclude>
+          		<!--
+          		<exclude>TestReadFrenchNer4Entities.java</exclude>
+          		<exclude>TestNameEntityFinderTraining.java</exclude>
+          		-->
           </excludes>
         </configuration>
       </plugin>
     </plugins>
   </build>
-  
   
 </project>
