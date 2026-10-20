@@ -25,23 +25,24 @@ public class TestPartOfSpeechTagger {
 		logger.info("--- Running a Part Of Speech Tagger ---");
 		
 		try {
+			
+			String wordInputfilePath = "/inputs/Le village englouti.docx";
+			String extractedDocumentText = new DocxToTextConverter().convertDocxToText(wordInputfilePath);
 
+			// extract sentences
 			InputStream sentenceInputStream = getClass().getResourceAsStream("/models/opennlp-fr-ud-gsd-sentence-1.3-2.5.4.bin");
 			SentenceModel sentenceModel = new SentenceModel(sentenceInputStream);
-			
+			SentenceDetectorME sentenceDetector = new SentenceDetectorME(sentenceModel);
+			String sentences[] = sentenceDetector.sentDetect(extractedDocumentText);
+
+			// from sentences to tokens
 			InputStream tokenizerModelIn = getClass().getResourceAsStream("/models/opennlp-fr-ud-gsd-tokens-1.3-2.5.4.bin");
 			TokenizerModel tokenizerModel = new TokenizerModel(tokenizerModelIn);
 			TokenizerME tokenizer = new TokenizerME(tokenizerModel);
 	
-			SentenceDetectorME sentenceDetector = new SentenceDetectorME(sentenceModel);
-			String wordInputfilePath = "/inputs/Le village englouti.docx";
-		
-			String extractedText = new DocxToTextConverter().convertDocxToText(wordInputfilePath);
-			String sentences[] = sentenceDetector.sentDetect(extractedText);
-			
+			// from tokens to Part of Speed tags
 			InputStream posModelIn = getClass().getResourceAsStream("/models/opennlp-fr-ud-gsd-pos-1.3-2.5.4.bin");
 			POSModel posModel = new POSModel(posModelIn);
-			
 			POSTaggerME tagger = new POSTaggerME(posModel);
 			
 			for (int i = 0; i < sentences.length; i++) {
