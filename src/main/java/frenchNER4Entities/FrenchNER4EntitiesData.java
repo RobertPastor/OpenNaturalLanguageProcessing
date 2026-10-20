@@ -17,7 +17,6 @@ public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
 	
 	private static final Logger logger = Logger.getLogger(FrenchNER4EntitiesData.class.getName());
 
-	
 	/**
 	 * source https://huggingface.co/datasets/CATIE-AQ/frenchNER_4entities/tree/main/data
 	 */
@@ -26,13 +25,22 @@ public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
 	String frenchNERoutputFileName = "";
 	Path frenchNERinputFilePath = null;
 	Path frenchNERoutputFilePath = null;
+	File inputTextFile = null;
 	FileOutputStream fos = null;
+	
+	// train , test , validation
+	String fileType = "";
 	
 	public final static char CR = (char) 0x0D;
 	public final static char LF = (char) 0x0A;
 	
-	public FrenchNER4EntitiesData( final String frenchNERinputFileName , final String frenchNERoutputFileName) 
+	public FrenchNER4EntitiesData( final String fileType, 
+			final String frenchNERinputFileName , 
+			final String frenchNERoutputFileName ) 
 			throws FileNotFoundException {
+		
+		this.fileType = fileType;
+		
 		this.frenchNERinputFileName = frenchNERinputFileName;
 		this.frenchNERoutputFileName = frenchNERoutputFileName;
 		
@@ -46,6 +54,7 @@ public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
 		this.frenchNERoutputFilePath = resourceDirectory.resolve(this.frenchNERoutputFileName);
 		this.fos = new FileOutputStream(this.frenchNERoutputFilePath.toFile().getAbsolutePath());
 		
+		this.inputTextFile = this.frenchNERinputFilePath.toFile();
 	}
 	
 	/**
@@ -61,13 +70,11 @@ public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
 		//String frenchNERinputFilePath = "/Catie-AQ-FE-NER-4Entities/train-00000-of-00001.parquet";
 		//InputStream is = getClass().getResourceAsStream(this.frenchNERinputFilePath);
 		
-		File file =  this.frenchNERinputFilePath.toFile();
-		
 		CarpetReader<FrenchNer4EntitiesDataRecord> carpetReader = null;
 		try {
 			AnnotatedTaggedNerEntities annotatedTaggedNerEntities = new AnnotatedTaggedNerEntities();
 			
-			carpetReader = new CarpetReader<>(file, FrenchNer4EntitiesDataRecord.class );
+			carpetReader = new CarpetReader<>(this.inputTextFile, FrenchNer4EntitiesDataRecord.class );
 			Iterator<FrenchNer4EntitiesDataRecord> iterator = ((CarpetReader<FrenchNer4EntitiesDataRecord>) carpetReader).iterator();
 
 			int count = 0;
@@ -99,10 +106,10 @@ public class FrenchNER4EntitiesData extends FrenchNER4EntitiesDataTable {
 				//System.out.println(record.tokens());
 			}
 			this.fos.flush();
+			this.fos.close();
 			
 		} catch (Exception ex) {
 			ex.printStackTrace(System.out);
 		}
-		
 	}
 }

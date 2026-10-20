@@ -109,11 +109,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
           		<exclude>TestPartOfSpeechTagger.java</exclude>
           		<exclude>TestLemmatizer.java</exclude>
           		<exclude>TestConvertNerToOpenNlp.java</exclude>
-          		<exclude>TestReadFrenchNer4Entities.java</exclude>
           		<exclude>TestEmptyTokenBetweenStartEndTags.java</exclude>
           		<exclude>TestNameEntityFinderTraining.java</exclude>
-          		<!--
           		<exclude>TestNamedEntityRecognition.java</exclude>
+          		<!--
+          		<exclude>TestReadFrenchNer4Entities.java</exclude>
           		-->
           </excludes>
         </configuration>

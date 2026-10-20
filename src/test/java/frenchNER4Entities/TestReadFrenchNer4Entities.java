@@ -17,7 +17,20 @@ public class TestReadFrenchNer4Entities {
 
 		String inputFileName = "train-00000-of-00001.parquet";
 		String outputFileName = "train-NER4Entities-input.txt";
-		FrenchNER4EntitiesData frenchNER4EntitiesData = new FrenchNER4EntitiesData (inputFileName , outputFileName);
+		String fileType = "train";
+		//FrenchNER4EntitiesData frenchNER4EntitiesData = new FrenchNER4EntitiesData ( fileType , inputFileName , outputFileName);
+		//frenchNER4EntitiesData.readCATIE_AQ_NER4EntitiesParquet();
+		
+		inputFileName = "test-00000-of-00001.parquet";
+		outputFileName = "test-NER4Entities-input.txt";
+		fileType = "test";
+		FrenchNER4EntitiesData frenchNER4EntitiesData = new FrenchNER4EntitiesData ( fileType , inputFileName , outputFileName);
+		frenchNER4EntitiesData.readCATIE_AQ_NER4EntitiesParquet();
+		
+		inputFileName = "validation-00000-of-00001.parquet";
+		outputFileName = "validation-NER4Entities-input.txt";
+		fileType = "validation";
+		frenchNER4EntitiesData = new FrenchNER4EntitiesData (fileType , inputFileName , outputFileName);
 		frenchNER4EntitiesData.readCATIE_AQ_NER4EntitiesParquet();
 		
 		logger.info("--- French NER 4 Entities carpet reader  - end ---");

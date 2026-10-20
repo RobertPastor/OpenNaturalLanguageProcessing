@@ -56,7 +56,7 @@ public class TestNamedEntityRecognition {
 				
 				Span nameSpans[] = nameFinderME.find( tokens );
 				for ( int j = 0 ; j < nameSpans.length ; j++ ) {
-					logger.info(" ================== " + String.valueOf(j) + " ================== ");
+					//logger.info(" ================== " + String.valueOf(j) + " ================== ");
 					logger.info( tokens[nameSpans[j].getStart()]  );
 					logger.info(  nameSpans[j].getType() );
 				}
