@@ -17,12 +17,16 @@ rober@RobertPastor MINGW64 ~/eclipse-2025-09/eclipse-jee-2025-09-R-win32-x86_64/
 $
 
 ## input format   
+
 https://github.com/catie-aq  
+
+## data source  
 
 https://huggingface.co/collections/CATIE-AQ/catie-french-ner-pack  
 
 1) a String[] array containing the tokens  
-2) an Integer[] array containing the integer value of each token
+2) an Integer[] array containing the integer value of each token  
+3) a String containing the name of the source where data comes from
 
 
 ## processing test

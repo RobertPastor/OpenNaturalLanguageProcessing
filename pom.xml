@@ -54,6 +54,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 	    <version>3.0.0-M6</version>
 	</dependency>
 	
+	<!-- Source: https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools -->
+	<dependency>
+	    <groupId>org.apache.opennlp</groupId>
+	    <artifactId>opennlp-tools</artifactId>
+	    <version>3.0.0-M6</version>
+	    <scope>compile</scope>
+	</dependency>
+	
 	<dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-engine</artifactId>
@@ -109,13 +117,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
           		<exclude>TestLemmatizer.java</exclude>
           		<exclude>TestConvertNerToOpenNlp.java</exclude>
           		<exclude>TestEmptyTokenBetweenStartEndTags.java</exclude>
-          		<exclude>TestNameEntityFinderTraining.java</exclude>
           		<exclude>TestNamedEntityRecognition.java</exclude>
           		<exclude>TestReadFrenchNer4Entities.java</exclude>
+          		<exclude>TestPartOfSpeechTagger.java</exclude>
+          		<exclude>TestNameEntityFinderModelTraining.java</exclude>
 
           		<!--
-          		<exclude>TestReadFrenchNer4Entities.java</exclude>
-          		<exclude>TestPartOfSpeechTagger.java</exclude>
+          		<exclude>TestNamedEntityRecognition.java</exclude>
 
           		-->
           </excludes>

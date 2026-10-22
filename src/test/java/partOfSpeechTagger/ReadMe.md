@@ -1,23 +1,23 @@
-## source POS tags
+## source POS tags -> UD17 ?
 
 https://universaldependencies.org/u/pos/
 
 Alphabetical listing
 
-ADJ: adjective
-ADP: adposition
-ADV: adverb
-AUX: auxiliary
-CCONJ: coordinating conjunction
-DET: determiner
-INTJ: interjection
-NOUN: noun
-NUM: numeral
-PART: particle
-PRON: pronoun
-PROPN: proper noun
-PUNCT: punctuation
-SCONJ: subordinating conjunction
-SYM: symbol
-VERB: verb
-X: other
+ADJ: adjective  / adjective numérical  
+ADP: adposition  / preposition
+ADV: adverb  
+AUX: auxiliary verb  
+CCONJ: coordinating conjunction  
+DET: determiner  / Determinant  
+INTJ: interjection  
+NOUN: noun  ( féminin singulier, féminin pluriel, masculin singulier , masculin pluriel )  
+NUM: numeral  
+PART: particle  
+PRON: pronoun  
+PROPN: proper noun  
+PUNCT: punctuation  
+SCONJ: subordinating conjunction  
+SYM: symbol  
+VERB: verb  
+X: other  / unknown word  

@@ -24,10 +24,11 @@ import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.TrainingParameters;
+import opennlp.tools.util.model.ModelType;
 
-public class TestNameEntityFinderTraining {
+public class TestNameEntityFinderModelTraining {
 
-	private static final Logger logger = Logger.getLogger(TestNameEntityFinderTraining.class.getName());
+	private static final Logger logger = Logger.getLogger(TestNameEntityFinderModelTraining.class.getName());
 	
 	@Test
 	public void generateFrenchNerPersonModel () throws IOException {
@@ -38,6 +39,7 @@ public class TestNameEntityFinderTraining {
 			TokenNameFinderFactory tokenNameFinderFactory = TokenNameFinderFactory.create(null, null, 
 					Collections.emptyMap(), 
 					new BioCodec());
+			
 			// input training file
 			String frenchNERinputFileName = "train-NER4Entities-input.txt";
 			Path resourceDirectory = Paths.get("src","test","resources","Catie-AQ-FR-NER-4Entities");
@@ -49,9 +51,15 @@ public class TestNameEntityFinderTraining {
 			
 			URLInputStreamFactory inputStreamFactory = new URLInputStreamFactory(trainingFileUrl);
 			ObjectStream<String> lineStream = new PlainTextByLineStream( inputStreamFactory , StandardCharsets.UTF_8);
+			
+			TrainingParameters trainingParameters = new TrainingParameters();
+			trainingParameters.put(TrainingParameters.ITERATIONS_PARAM, 1000);// number of training iterations
+			trainingParameters.put(TrainingParameters.CUTOFF_PARAM, 5);//minimal number of times a feature must be seen
+			trainingParameters.put(TrainingParameters.ALGORITHM_PARAM, ModelType.MAXENT.toString());
 				
 			ObjectStream<NameSample> sampleStream = new NameSampleDataStream(lineStream);
-			TokenNameFinderModel trainedModel = NameFinderME.train("fr", "person", sampleStream, TrainingParameters.defaultParams(), tokenNameFinderFactory);
+			TokenNameFinderModel trainedModel = NameFinderME.train("fr", "person", sampleStream, 
+					trainingParameters , tokenNameFinderFactory);
 			
 			// output trained file
 			String frenchNERoutputFileName = "fr-ner-train-person.bin";
