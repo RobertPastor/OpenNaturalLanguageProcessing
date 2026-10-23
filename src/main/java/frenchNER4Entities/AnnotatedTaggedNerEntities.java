@@ -18,7 +18,6 @@ public class AnnotatedTaggedNerEntities {
 	
 	private static final Logger logger = Logger.getLogger(AnnotatedTaggedNerEntities.class.getName());
 
-	
 	// Custom Checked Exception
 	class InconsistentInputArraySizeException extends Exception {
 	    /**
