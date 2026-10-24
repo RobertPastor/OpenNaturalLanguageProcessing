@@ -1,8 +1,8 @@
-## pupose : analyse a set of sentences extracted from a WORD file
+## Purpose : analyse a set of sentences extracted from a WORD file
 
-## input
-a Word document , whose sentences are extracted using Apache POI library
+## Input
+a Word docx document , whose sentences are extracted using Apache POI library
 
-## cut into sentences
-## cut each sentence into tokens (including punctuation)
-## use the NER model (build in the appropriate test package)
+## Process step : cut document into sentences
+## Process step : cut each sentence into tokens (including punctuation)
+## Process step : use the NER model (build in the appropriate test package)

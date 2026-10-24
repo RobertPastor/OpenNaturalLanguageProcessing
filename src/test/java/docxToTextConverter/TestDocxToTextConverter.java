@@ -30,7 +30,6 @@ public class TestDocxToTextConverter {
             assert ( text.toString().length() > 0 );
         }
 		logger.info("--- word to text converter - end ---");
-
     }
 
 }

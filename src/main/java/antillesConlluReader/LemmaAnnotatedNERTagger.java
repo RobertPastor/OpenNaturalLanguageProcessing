@@ -2,7 +2,6 @@ package antillesConlluReader;
 
 import java.util.logging.Logger;
 
-import frenchNER4Entities.OpenNlpNerTagsGenerator;
 import opennlp.tools.lemmatizer.LemmaSample;
 
 public class LemmaAnnotatedNERTagger {

@@ -52,3 +52,8 @@ target/*
 
 ## conllu models
 *.conllu
+
+## input docx files
+*.docx
+## liste des prénoms français
+*.csv

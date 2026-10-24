@@ -53,8 +53,8 @@ public class TestNameEntityFinderModelTraining {
 			ObjectStream<String> lineStream = new PlainTextByLineStream( inputStreamFactory , StandardCharsets.UTF_8);
 			
 			TrainingParameters trainingParameters = new TrainingParameters();
-			trainingParameters.put(TrainingParameters.ITERATIONS_PARAM, 1000);// number of training iterations
-			trainingParameters.put(TrainingParameters.CUTOFF_PARAM, 5);//minimal number of times a feature must be seen
+			trainingParameters.put(TrainingParameters.ITERATIONS_PARAM, 100);// number of training iterations
+			trainingParameters.put(TrainingParameters.CUTOFF_PARAM, 3);//minimal number of times a feature must be seen
 			trainingParameters.put(TrainingParameters.ALGORITHM_PARAM, ModelType.MAXENT.toString());
 				
 			ObjectStream<NameSample> sampleStream = new NameSampleDataStream(lineStream);

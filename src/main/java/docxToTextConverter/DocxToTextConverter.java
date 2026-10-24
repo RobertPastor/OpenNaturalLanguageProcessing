@@ -11,12 +11,12 @@ public class DocxToTextConverter {
 
 	private static final Logger logger = Logger.getLogger(DocxToTextConverter.class.getName());
 
-	public String convertDocxToText( String wordInputFilePath) throws IOException {
+	public String convertDocxToText( final String wordInputFilePath) throws IOException {
 
 		logger.info("--- word to text converter ---");
-		String wordInputfilePath = "/inputs/Le village englouti.docx";
+		//String wordInputfilePath = "/inputs/Le village englouti.docx";
 
-		try (InputStream is = getClass().getResourceAsStream(wordInputfilePath);
+		try (InputStream is = getClass().getResourceAsStream( wordInputFilePath );
 				XWPFDocument document = new XWPFDocument(is)) {
 			StringBuilder text = new StringBuilder();
 			// Iterate through all paragraphs in the document
