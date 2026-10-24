@@ -104,12 +104,12 @@ public class TestNamedEntityRecognition {
 			tokenizerModelIn.close();
 			nameEntityRecogIn.close();
 			
+			// sort the map according to count of occurrences
 			Map<String, Integer> sortedPersonCounterMap = sortByValue(personCounterMap);
 			// show occurrences
 			sortedPersonCounterMap.forEach ( (token , count) -> {
 				logger.info( "token -> " + token + " -> count -> " + String.valueOf(count));
 			});
-			
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
