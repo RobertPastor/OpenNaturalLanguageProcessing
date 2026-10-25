@@ -22,8 +22,6 @@ public class TestAntillesConlluReader {
 
 	private static final Logger logger = Logger.getLogger(TestAntillesConlluReader.class.getName());
 	
-	
-	
 	// Custom Checked Exception
 	class InconsistentInputArraySizeException extends Exception {
 
@@ -42,9 +40,9 @@ public class TestAntillesConlluReader {
 		try {
 			
 			Path resourceDirectory = Paths.get("src","test","resources","Antilles-ConLLu");
-			String prefix = "test";
+			String prefix = "train";
 			
-			String outputNerFileName = prefix + "-Conllu-NER-input.txt";
+			String outputNerFileName = prefix + "-Antilles-Conllu-NER-input.txt";
 			Path frenchNERoutputFilePath = resourceDirectory.resolve(outputNerFileName);
 			FileOutputStream fos = new FileOutputStream( frenchNERoutputFilePath.toFile().getAbsolutePath() );
 			
@@ -82,7 +80,9 @@ public class TestAntillesConlluReader {
 						logger.info( "token -> " + tokens[i] + " -> lemma -> " + lemmas[i] + " -> tag -> " + tags[i] );
 					}
 					LemmaAnnotatedNERTagger lemmaAnnotatedNERTagger = new LemmaAnnotatedNERTagger(lemmaSample);
-					fos.write(lemmaAnnotatedNERTagger.generateAnnotatedTags().getBytes());
+					String annotatedNERtaggedSentence = lemmaAnnotatedNERTagger.generateAnnotatedTags();
+
+					fos.write(annotatedNERtaggedSentence.getBytes());
 					fos.flush();
 					lemmaSample = conlluWordLineStream.read();
 				}

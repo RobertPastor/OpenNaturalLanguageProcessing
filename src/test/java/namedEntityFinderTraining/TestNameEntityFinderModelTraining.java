@@ -40,9 +40,11 @@ public class TestNameEntityFinderModelTraining {
 					Collections.emptyMap(), 
 					new BioCodec());
 			
-			// input training file
-			String frenchNERinputFileName = "train-NER4Entities-input.txt";
-			Path resourceDirectory = Paths.get("src","test","resources","Catie-AQ-FR-NER-4Entities");
+			// input training file with START END xml like tags
+			String frenchNERinputFileName = "outputNERmergedTextFile.txt";
+			String resourceDirectoryString = "mergedNERinputs";
+			
+			Path resourceDirectory = Paths.get("src","test","resources",resourceDirectoryString);
 			Path frenchNERinputFilePath = resourceDirectory.resolve(frenchNERinputFileName);
 			
 			File trainingFile = frenchNERinputFilePath.toFile();
@@ -52,11 +54,13 @@ public class TestNameEntityFinderModelTraining {
 			URLInputStreamFactory inputStreamFactory = new URLInputStreamFactory(trainingFileUrl);
 			ObjectStream<String> lineStream = new PlainTextByLineStream( inputStreamFactory , StandardCharsets.UTF_8);
 			
+			// training parameters
 			TrainingParameters trainingParameters = new TrainingParameters();
 			trainingParameters.put(TrainingParameters.ITERATIONS_PARAM, 100);// number of training iterations
 			trainingParameters.put(TrainingParameters.CUTOFF_PARAM, 3);//minimal number of times a feature must be seen
 			trainingParameters.put(TrainingParameters.ALGORITHM_PARAM, ModelType.MAXENT.toString());
 				
+			//output model
 			ObjectStream<NameSample> sampleStream = new NameSampleDataStream(lineStream);
 			TokenNameFinderModel trainedModel = NameFinderME.train("fr", "person", sampleStream, 
 					trainingParameters , tokenNameFinderFactory);
@@ -65,6 +69,7 @@ public class TestNameEntityFinderModelTraining {
 			String frenchNERoutputFileName = "fr-ner-train-person.bin";
 			Path frenchNERoutputFilePath = resourceDirectory.resolve(frenchNERoutputFileName);
 			
+			// serialize the model file
 			File modelOutputFile = frenchNERoutputFilePath.toFile();
 			OutputStream modelOut = new BufferedOutputStream(new FileOutputStream(modelOutputFile));
 			trainedModel.serialize(modelOut);

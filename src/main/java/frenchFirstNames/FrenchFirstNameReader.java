@@ -1,5 +1,9 @@
 package frenchFirstNames;
 
+/**
+ * create a french NER text files with the START:person containing the french First Name
+ * List of french first names provided by the french governement see ReadMe
+ */
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +12,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.logging.Logger;
 
 public class FrenchFirstNameReader {
@@ -29,6 +32,16 @@ public class FrenchFirstNameReader {
 		this.inputFile = frenchNERoutputFilePath.toFile();
 	}
 	
+	/**
+	 * generate a text line such as the following
+	 * Pendant l'année 2014, le prénom masculin <START:person> DAVY <END> fut attribué 33 fois.
+	 * 
+	 * @param MasculinFeminin
+	 * @param firstName
+	 * @param yearString
+	 * @param countString
+	 * @return
+	 */
 	private String generateSentence( final String MasculinFeminin,  final String firstName , 
 			final String yearString , final String countString) {
 		

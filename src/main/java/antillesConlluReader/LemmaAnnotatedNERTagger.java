@@ -24,7 +24,6 @@ public class LemmaAnnotatedNERTagger {
 		this.tags = lemmaSample.getTags();
 	}
 
-	
 	private static String generatePersonStartTag() {
 		return " <START:person> ";
 	}
@@ -58,27 +57,37 @@ public class LemmaAnnotatedNERTagger {
 			} else {
 				logger.info( "it is NOT the first token ");
 				if ( tag.equalsIgnoreCase(PROPN) || tag.equalsIgnoreCase(XFAMIL) ) {
-					logger.info("token must be annoted ");
+					logger.info("current token must be annoted ");
 					if ( previousTagWasPropnOrXfamil ) {
 						// previous token was already annotated
+						// append this token in the same previous START Tag
 						previousTagWasPropnOrXfamil = true;
 						annotatedSentence.append( token );
+						if ( ( i + 1 ) < this.tokens.length ) {
+							// there is another token after this one.
+							logger.info(" there is another token after this one ");
+						} else {
+							// it is the last token -> not anyone more after
+							// previously token was annotated -> must close the tag
+							annotatedSentence.append( generateEndTag() );
+						}
 					} else {
 						// previous token was not annotated
 						annotatedSentence.append ( generatePersonStartTag() );
-						previousTagWasPropnOrXfamil = true;
 						annotatedSentence.append( token );
+						// next time , retain that the previous token was annotated inside the Start tag
+						previousTagWasPropnOrXfamil = true;
 					}
-					
 				} else {
-					// current token must not be annotated (must not be inserted in START END)
+					// current token must not be annotated (must not be inserted inside a START END)
+					logger.info("current token must NOT be annotated");
 					if ( previousTagWasPropnOrXfamil ) {
-						// previous token was annotated -> time to append an END tag
+						logger.info( "previous token was annotated -> time to append an END tag");
 						annotatedSentence.append ( generateEndTag() );
 						annotatedSentence.append ( token );
 						previousTagWasPropnOrXfamil = false;
-						
 					} else {
+						// previous token was NOT annotated - this one too must not be annotated
 						annotatedSentence.append ( token );
 						previousTagWasPropnOrXfamil = false;
 					}

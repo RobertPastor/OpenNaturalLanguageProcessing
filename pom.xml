@@ -119,12 +119,16 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
           		<exclude>TestEmptyTokenBetweenStartEndTags.java</exclude>
           		<exclude>TestReadFrenchNer4Entities.java</exclude>
           		<exclude>TestPartOfSpeechTagger.java</exclude>
-          		<exclude>TestAntillesConlluReader.java</exclude>
+				<exclude>TestFrenchFirstNameReader</exclude>
+				<exclude>TestAntillesConlluReader.java</exclude>
+				<exclude>TestMergeNERinputs.java</exclude>
           		<exclude>TestNameEntityFinderModelTraining.java</exclude>
-				<exclude>TestNamedEntityRecognition.java</exclude>
 
           		<!--
+				<exclude>TestMergeNERinputs.java</exclude>
 				<exclude>TestNamedEntityRecognition.java</exclude>
+
+				<exclude>TestAntillesConlluReader.java</exclude>
           		<exclude>TestNameEntityFinderModelTraining.java</exclude>
           		-->
           </excludes>
