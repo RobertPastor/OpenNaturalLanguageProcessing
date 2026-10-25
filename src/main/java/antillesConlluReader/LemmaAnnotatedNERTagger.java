@@ -32,11 +32,15 @@ public class LemmaAnnotatedNERTagger {
 		return " <END> ";
 	}
 	
+	private boolean tagMustBeAnnotatedAsPerson( final String tag ) {
+		return ( tag.equalsIgnoreCase(XFAMIL) );
+	}
+	
 	public String generateAnnotatedTags( ) {
 		
 		StringBuilder  annotatedSentence = new StringBuilder();
 		
-		boolean previousTagWasPropnOrXfamil = false;
+		boolean previousTagWasXfamil = false;
 		int i = 0;
 		while (  i < this.tokens.length ) {
 			String token = this.tokens[i];
@@ -44,24 +48,25 @@ public class LemmaAnnotatedNERTagger {
 			if ( i == 0 ) {
 				// first token and first tag
 				logger.info( "it is the first token ");
-				if ( tag.equalsIgnoreCase(PROPN) || tag.equalsIgnoreCase(XFAMIL) ) {
+				// XFamily only tag to convert into START:person
+				if ( tagMustBeAnnotatedAsPerson ( tag )  ) {
 					// current NER Tag value must be annotated
 					logger.info( "first token must be annoted ");
 					annotatedSentence.append ( generatePersonStartTag() );
-					previousTagWasPropnOrXfamil = true;
+					previousTagWasXfamil = true;
 					annotatedSentence.append( token );
 				} else {
-					previousTagWasPropnOrXfamil = false;
+					previousTagWasXfamil = false;
 					annotatedSentence.append( token );
 				}
 			} else {
 				logger.info( "it is NOT the first token ");
-				if ( tag.equalsIgnoreCase(PROPN) || tag.equalsIgnoreCase(XFAMIL) ) {
-					logger.info("current token must be annoted ");
-					if ( previousTagWasPropnOrXfamil ) {
+				if ( tagMustBeAnnotatedAsPerson ( tag ) ) {
+					logger.info("current token must be annoted as Start:person");
+					if ( previousTagWasXfamil ) {
 						// previous token was already annotated
 						// append this token in the same previous START Tag
-						previousTagWasPropnOrXfamil = true;
+						previousTagWasXfamil = true;
 						annotatedSentence.append( token );
 						if ( ( i + 1 ) < this.tokens.length ) {
 							// there is another token after this one.
@@ -76,20 +81,21 @@ public class LemmaAnnotatedNERTagger {
 						annotatedSentence.append ( generatePersonStartTag() );
 						annotatedSentence.append( token );
 						// next time , retain that the previous token was annotated inside the Start tag
-						previousTagWasPropnOrXfamil = true;
+						previousTagWasXfamil = true;
 					}
 				} else {
 					// current token must not be annotated (must not be inserted inside a START END)
+					// tag different from XFAMILY
 					logger.info("current token must NOT be annotated");
-					if ( previousTagWasPropnOrXfamil ) {
+					if ( previousTagWasXfamil ) {
 						logger.info( "previous token was annotated -> time to append an END tag");
 						annotatedSentence.append ( generateEndTag() );
 						annotatedSentence.append ( token );
-						previousTagWasPropnOrXfamil = false;
+						previousTagWasXfamil = false;
 					} else {
 						// previous token was NOT annotated - this one too must not be annotated
 						annotatedSentence.append ( token );
-						previousTagWasPropnOrXfamil = false;
+						previousTagWasXfamil = false;
 					}
 				}
 			}

@@ -18,12 +18,15 @@ public class TestMergeNERinputs {
 	public void MergeNER_inputTextFiles() throws Exception {
 
 		logger.info("--- Test French NER input merger - start ---");
+		
 		String mergedOutputTextFileName = "outputNERmergedTextFile.txt";
 		
 		// list of text files to merge
 		String[] inputFileNamesToMerge = new String[]{"french-first-names-NER-input.txt", 
-				"train-Antilles-Conllu-NER-input.txt", "train-CATIE-AQ-NER4Entities-input.txt"};
+				"train-Antilles-Conllu-NER-input.txt", 
+				"train-CATIE-AQ-NER4Entities-input.txt"};
 		
+		// directory under src / test / resources where to find input text files
 		String resourceDirectoryString = "mergedNERinputs";
 		
 		MergeNERinputTextFiles mergeNERinputTextFiles = new MergeNERinputTextFiles(resourceDirectoryString , inputFileNamesToMerge ,

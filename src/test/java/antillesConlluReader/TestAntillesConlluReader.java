@@ -73,8 +73,9 @@ public class TestAntillesConlluReader {
 					logger.info(" ------ tags size = " + String.valueOf ( tags.length ));
 					
 					if ( ( tokens.length !=  lemmas.length ) || 
-							( tokens.length != tags.length ) || ( lemmas.length != tags.length ) ) {
-							throw new InconsistentInputArraySizeException("Size of tokens, lemmas, and tags must match.");
+							( tokens.length != tags.length ) || 
+							( lemmas.length != tags.length ) ) {
+							throw new InconsistentInputArraySizeException("Size of tokens, lemmas, and tags must be identical.");
 					}
 					for ( int i = 0 ; i < tokens.length ; i++ ) {
 						logger.info( "token -> " + tokens[i] + " -> lemma -> " + lemmas[i] + " -> tag -> " + tags[i] );
@@ -90,6 +91,7 @@ public class TestAntillesConlluReader {
 			}
 			fos.close();
 			logger.info(" count of lines = " + String.valueOf( lineCount ));
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
