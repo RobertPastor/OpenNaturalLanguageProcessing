@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import org.junit.jupiter.api.Test;
 
+import genericConlluReader.LemmaAnnotatedNERTagger;
 import opennlp.tools.formats.conllu.ConlluLemmaSampleStream;
 import opennlp.tools.formats.conllu.ConlluSentence;
 import opennlp.tools.formats.conllu.ConlluStream;
