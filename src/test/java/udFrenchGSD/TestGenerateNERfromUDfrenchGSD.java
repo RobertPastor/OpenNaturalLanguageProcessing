@@ -39,6 +39,7 @@ public class TestGenerateNERfromUDfrenchGSD {
 		GenericConlluReader genericConlluReader = new GenericConlluReader( resourceDirectoryPath , inputConlluFileName , outputNERtextFileName );
 		genericConlluReader.generateNERtextOutputFile();
 		
+		logger.info(" output NER text file path -> " + outputNERtextFilePath);
 
 		logger.info("--- generate NER from UD French GSD - end  ---");
 

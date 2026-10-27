@@ -53,103 +53,102 @@ public class LemmaAnnotatedNERTagger {
 			String token = this.tokens[i];
 			String tag = this.tags[i];
 			if ( i == 0 ) {
-				previousTagWasPropn = tagIsOfTypePropn(tag);
 				// first token and first tag
 				logger.info( "it is the first token ");
-				// XFamily only tag to convert into START:person
+				previousTagWasPropn = tagIsOfTypePropn(tag);
+				previousTagWasXfamil = tagIsOfTypeXFamil ( tag );
+				// XFamily only tag to convert into START:person OR 2 consecutives PROPN
 				if ( tagIsOfTypeXFamil ( tag )  ) {
 					// current NER Tag value must be annotated
 					logger.info( "first token must be annoted ");
 					annotatedSentence.append ( generatePersonStartTag() );
-					previousTagWasXfamil = true;
 					annotatedSentence.append( token );
 					startTagHasBeenInserted = true;
 				} else {
-					
-					// if current tag is PROPN AND there is a next one AND next one also then insert a START:person tag
-					if ( tagIsOfTypePropn(tag) && ( (i+1) < this.tokens.length ) && tagIsOfTypePropn( this.tags[i+1]) ) {
+					// if current tag is PROPN AND there is a another one AND next one is PROPN or XFAMIL 
+					// then insert a START:person tag
+					if ( tagIsOfTypePropn(tag) && ( (i+1) < this.tokens.length ) && 
+							( tagIsOfTypePropn( this.tags[i+1] ) ||  tagIsOfTypeXFamil ( this.tags[i+1] ) ) ) {
 						annotatedSentence.append ( generatePersonStartTag() );
 						// two consecutive PROPN is like a XFamil
-						previousTagWasXfamil = true;
 						annotatedSentence.append( token );
 						startTagHasBeenInserted = true;
 					} else {
-						previousTagWasXfamil = false;
+						// do not insert Start Tag
 						annotatedSentence.append( token );
 						startTagHasBeenInserted = false;
-
 					}
 				}
 			} else {
+				// it is NOT the first token
 				logger.info( "it is NOT the first token ");
-				if ( tagIsOfTypeXFamil ( tag ) ) {
-					logger.info("current tag is of type XFamil -> token must be annoted as Start:person");
-					if ( previousTagWasXfamil ) {
-						// previous token was already annotated
-						// append this token in the same previous START Tag
-						previousTagWasXfamil = true;
+				if ( startTagHasBeenInserted == true ) {
+					logger.info( "a start tag has been already inserted ");				
+					if (  tagIsOfTypePropn(tag) || tagIsOfTypeXFamil ( tag ) ) {
+						// continue inserting TAG after the START
 						annotatedSentence.append( token );
-						if ( ( i + 1 ) < this.tokens.length ) {
-							// there is another token after this one.
-							logger.info(" there is another token after this one ");
-							previousTagWasPropn = tagIsOfTypePropn(tag);
-						} else {
-							// it is the last token -> not anyone more after
-							// previously token was annotated -> must close the tag
-							annotatedSentence.append( generateEndTag() );
-							previousTagWasPropn = tagIsOfTypePropn(tag);
-							startTagHasBeenInserted = false;
-						}
-					} else {
-						// previous token was not annotated
-						annotatedSentence.append ( generatePersonStartTag() );
-						annotatedSentence.append( token );
-						// next time , retain that the previous token was annotated inside the Start tag
-						previousTagWasXfamil = true;
-						previousTagWasPropn = tagIsOfTypePropn(tag);
 						startTagHasBeenInserted = true;
-
-					}
-				} else {
-					// tag different from XFamil
-					// current token must not be annotated (must not be inserted inside a START END)
-					// tag different from XFAMILY
-					logger.info("current token must NOT be annotated except if previous one was PROPN and this one also");
-					if ( previousTagWasXfamil == true ) {
-						logger.info( "previous token was annotated AND current is XFamily -> time to append an END tag");
-						// assumption : XFamil is the last after several PROPN
+						
+					} else {
+						// it is the end of annotated tag
+						// insert END tag followed by the token
 						annotatedSentence.append ( generateEndTag() );
 						annotatedSentence.append ( token );
-						previousTagWasXfamil = false;
+						
 						startTagHasBeenInserted = false;
-
+						previousTagWasPropn = tagIsOfTypePropn(tag);
+						previousTagWasXfamil = tagIsOfTypeXFamil ( tag );
+					}
+					
+				} else {
+					logger.info("there is no ongoing START tag around ");
+					// the current stream is not inside a START tag
+					// consider inserting a START tag
+					if ( tagIsOfTypeXFamil ( tag )  ) {
+						// current NER Tag value must be annotated
+						logger.info( "first token must be annoted ");
+						annotatedSentence.append ( generatePersonStartTag() );
+						annotatedSentence.append( token );
+						startTagHasBeenInserted = true;
+						previousTagWasPropn = tagIsOfTypePropn(tag);
+						previousTagWasXfamil = tagIsOfTypeXFamil ( tag );
+					
 					} else {
-						// previous tag was not of type XFmai
-						if ( previousTagWasPropn ) {
-							// previous tag was of type PROPN and current also -> the START: person already inserted
-							if ( tagIsOfTypePropn(tag) ) {
-								// current tag is of type PROPN
-								annotatedSentence.append ( token );
-								previousTagWasXfamil = false;
-								previousTagWasPropn = tagIsOfTypePropn(tag);
-								startTagHasBeenInserted = true;
-							} else {
-								// previous was PROPN and current is not PROPN
-								if ( startTagHasBeenInserted ) {
-									annotatedSentence.append ( generateEndTag() );
-									annotatedSentence.append ( token );
-									previousTagWasXfamil = false;
-									startTagHasBeenInserted = false;
-								}
+						
+						// if current tag is PROPN AND there is a another token after this one AND next one is PROPN or XFAMIL 
+						// then insert a START:person tag
+						if ( tagIsOfTypePropn(tag) && ( (i+1) < this.tokens.length ) && 
+								( tagIsOfTypePropn( this.tags[i+1] ) ||  tagIsOfTypeXFamil ( this.tags[i+1] ) ) ) {
+							annotatedSentence.append ( generatePersonStartTag() );
+							// two consecutive PROPN is like a XFamil
+							annotatedSentence.append( token );
+							startTagHasBeenInserted = true;
+							
+							previousTagWasPropn = tagIsOfTypePropn(tag);
+							previousTagWasXfamil = tagIsOfTypeXFamil ( tag );
+							
+							if ( ( i + 1 ) >= this.tokens.length ) {
+								// it is the last token
+								logger.info( " it is the last token -> insert END tag ");
+								annotatedSentence.append( generateEndTag() );
+								
+								startTagHasBeenInserted = false;
+								
 							}
+							
 						} else {
-							// previous token was NOT annotated - this one too must not be annotated
-							annotatedSentence.append ( token );
-							previousTagWasXfamil = false;
+							// do not insert Start Tag
+							annotatedSentence.append( token );
+							startTagHasBeenInserted = false;
+							
+							previousTagWasPropn = tagIsOfTypePropn(tag);
+							previousTagWasXfamil = tagIsOfTypeXFamil ( tag );
 						}
+						
 					}
 				}
 			}
+				
 			annotatedSentence.append(" ");
 			logger.info( annotatedSentence.toString() );
 			i = i + 1;
