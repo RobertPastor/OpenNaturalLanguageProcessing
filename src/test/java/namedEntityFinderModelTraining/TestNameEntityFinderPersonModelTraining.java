@@ -1,4 +1,4 @@
-package namedEntityFinderTraining;
+package namedEntityFinderModelTraining;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -26,9 +26,9 @@ import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.TrainingParameters;
 import opennlp.tools.util.model.ModelType;
 
-public class TestNameEntityFinderModelTraining {
+public class TestNameEntityFinderPersonModelTraining {
 
-	private static final Logger logger = Logger.getLogger(TestNameEntityFinderModelTraining.class.getName());
+	private static final Logger logger = Logger.getLogger(TestNameEntityFinderPersonModelTraining.class.getName());
 	
 	@Test
 	public void generateFrenchNerPersonModel () throws IOException {

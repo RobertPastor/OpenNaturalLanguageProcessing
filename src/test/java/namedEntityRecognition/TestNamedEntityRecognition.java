@@ -36,7 +36,7 @@ public class TestNamedEntityRecognition {
         List<Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
 
         // Sort list using a comparator for values
-        list.sort(Entry.comparingByValue());
+        list.sort(Entry.comparingByValue(Comparator.reverseOrder()));
 
         // Create a LinkedHashMap to preserve insertion order
         Map<String, Integer> result = new LinkedHashMap<String,Integer>();
@@ -54,6 +54,7 @@ public class TestNamedEntityRecognition {
 		
 		try {
 			Map<String, Integer> personCounterMap = new HashMap<String, Integer>(); 
+			Map<String, Integer> locationCounterMap = new HashMap<String, Integer>(); 
 			
 			// test resources path to the docx input file
 			String wordInputfilePath = "/inputs/Le village englouti.docx";
@@ -96,6 +97,9 @@ public class TestNamedEntityRecognition {
 					if ( type.equalsIgnoreCase("person") ) {
 						personCounterMap.compute(token, (k, v) -> v == null ? 1 : v + 1); 
 					}
+					if ( type.equalsIgnoreCase("location")) {
+						locationCounterMap.compute(token, (k,v) -> v == null ? 1 : v + 1);
+					}
 				}
 			}
 			nameFinderME.clearAdaptiveData();
@@ -108,13 +112,23 @@ public class TestNamedEntityRecognition {
 			// sort the map according to count of occurrences
 			Map<String, Integer> sortedPersonCounterMap = sortByValue(personCounterMap);
 			// show occurrences
+			int max = 50;
+			int index = 0;
 			for (Map.Entry<String, Integer> entry : sortedPersonCounterMap.entrySet()) {
-				  System.out.println(entry.getKey() + "/" + entry.getValue());
+				index = index +1 ;
+				if ( index < max ) {
+					System.out.println("person -> " + entry.getKey() + " - " + entry.getValue());
+				}
 			}
 			
-			sortedPersonCounterMap.forEach ( (token , count) -> {
-				logger.info( "token -> " + token + " -> count -> " + String.valueOf(count));
-			});
+			Map<String, Integer> sortedLocationCounterMap = sortByValue( locationCounterMap );
+			index = 0;
+			for (Map.Entry<String, Integer> entry : sortedLocationCounterMap.entrySet()) {
+				index = index +1 ;
+				if ( index < max ) {
+					System.out.println("location -> " +entry.getKey() + " - " + entry.getValue());
+				}
+			}
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

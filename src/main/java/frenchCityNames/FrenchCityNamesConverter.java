@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.logging.Logger;
 
 public class FrenchCityNamesConverter {
@@ -32,10 +31,10 @@ public class FrenchCityNamesConverter {
 		this.inputFile = frenchNERoutputFilePath.toFile();
 		
 		logger.info("French City names converter -> input file path -> " + this.inputFile.getPath());
-
 	}
 
 	/**
+	 * input format : 
 	 * Zuydcoote,59,Nord,Hauts-de-France
 	 * @return
 	 */

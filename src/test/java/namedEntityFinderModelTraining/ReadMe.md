@@ -1,6 +1,6 @@
 ## run model running from a merged input NER files
 
- mvn -Dtest=TestNameEntityFinderModelTraining test
+ mvn -Dtest=TestNameEntityFinderPersonModelTraining test
  
  ## inputs are taken from
  
