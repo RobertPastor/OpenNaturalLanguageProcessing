@@ -40,7 +40,7 @@ public class FrenchCityNamesConverter {
 	 * @return
 	 */
 	private String generateSentence( final String ville,  final String codeDepartementString , 
-			final String departement , final String region) {
+			final String nomDuDepartement , final String region) {
 
 		StringBuilder sb = new StringBuilder();
 
@@ -61,16 +61,17 @@ public class FrenchCityNamesConverter {
 		} catch (NumberFormatException nfe) {
 			codeDepartementInt = 0;
 	    }
+		// 28th October 2026 - decision not to encode a integer departement code into a location
 		if ( codeDepartementInt > 0 ) {
-			sb.append(" <START:location> ");
+			sb.append(" ");
 			sb.append(codeDepartementString);
-			sb.append(" <END> ");
+			sb.append(" ");
 		} 
 		
 		sb.append(" de nom ");
-		if ( departement.length() > 0 ) {
+		if ( nomDuDepartement.length() > 0 ) {
 			sb.append(" <START:location> ");
-			sb.append( departement );
+			sb.append( nomDuDepartement );
 			sb.append(" <END> ");
 		}
 		sb.append(" appartient à la région ");
@@ -103,7 +104,8 @@ public class FrenchCityNamesConverter {
 			// header line as 1st line does not contain valuable data
 			boolean csvHeaderLine = true;
 			while ((line = br.readLine()) != null) {
-				
+				logger.info( line );
+
 				if ( csvHeaderLine ) {
 					csvHeaderLine = false;
 				} else {
@@ -114,10 +116,10 @@ public class FrenchCityNamesConverter {
 					fos.flush();
 					logger.info( resultingSentence );
 				}
-			
-				logger.info( line );
 			}
 			fos.close();
+			logger.info( frenchFirstNamesNERoutputFilePath.toFile().getAbsolutePath() );
+
 		}
 
 	}

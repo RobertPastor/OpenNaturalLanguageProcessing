@@ -25,7 +25,8 @@ public class TestMergeNERinputs {
 		String[] inputFileNamesToMerge = new String[]{"french-first-names-NER-input.txt", 
 				"train-Antilles-Conllu-NER-input.txt", 
 				"train-CATIE-AQ-NER4Entities-input.txt",
-				"fr_gsd-ud-NER-train.txt"};
+				"fr_gsd-ud-NER-train.txt",
+				"french-city-names-NER-input.txt"};
 		
 		// directory under src / test / resources where to find input text files
 		String resourceDirectoryString = "mergedNERinputs";
