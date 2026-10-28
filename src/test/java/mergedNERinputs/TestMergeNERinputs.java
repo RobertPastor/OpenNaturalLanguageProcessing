@@ -24,7 +24,8 @@ public class TestMergeNERinputs {
 		// list of text files to merge
 		String[] inputFileNamesToMerge = new String[]{"french-first-names-NER-input.txt", 
 				"train-Antilles-Conllu-NER-input.txt", 
-				"train-CATIE-AQ-NER4Entities-input.txt"};
+				"train-CATIE-AQ-NER4Entities-input.txt",
+				"fr_gsd-ud-NER-train.txt"};
 		
 		// directory under src / test / resources where to find input text files
 		String resourceDirectoryString = "mergedNERinputs";
@@ -32,6 +33,8 @@ public class TestMergeNERinputs {
 		MergeNERinputTextFiles mergeNERinputTextFiles = new MergeNERinputTextFiles(resourceDirectoryString , inputFileNamesToMerge ,
 				mergedOutputTextFileName );
 		mergeNERinputTextFiles.MergeTextFiles();
+		
+		logger.info("files are merged correctly");
 		
 		logger.info("--- Test French NER input merger - end ---");
 

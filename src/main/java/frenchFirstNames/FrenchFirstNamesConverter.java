@@ -14,9 +14,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Logger;
 
-public class FrenchFirstNameReader {
+public class FrenchFirstNamesConverter {
 	
-	private static final Logger logger = Logger.getLogger(FrenchFirstNameReader.class.getName());
+	private static final Logger logger = Logger.getLogger(FrenchFirstNamesConverter.class.getName());
 
 	private String CsvDelimiter = ";";
 	File inputFile = null;
@@ -25,16 +25,16 @@ public class FrenchFirstNameReader {
 	public final static char CR = (char) 0x0D;
 	public final static char LF = (char) 0x0A;
 
-	public FrenchFirstNameReader( final String sourceDataFileName ) {
+	public FrenchFirstNamesConverter( final String sourceDataFileName ) {
 
 		// input file name		
-		Path frenchNERoutputFilePath = resourceDirectory.resolve(sourceDataFileName);
-		this.inputFile = frenchNERoutputFilePath.toFile();
+		Path frenchNamesInputFilePath = resourceDirectory.resolve(sourceDataFileName);
+		this.inputFile = frenchNamesInputFilePath.toFile();
 	}
 	
 	/**
 	 * generate a text line such as the following
-	 * Pendant l'année 2014, le prénom masculin <START:person> DAVY <END> fut attribué 33 fois.
+	 * Pendant l'année <START:date> 2014 <END>, le prénom masculin <START:person> DAVY <END> fut attribué 33 fois.
 	 * 
 	 * @param MasculinFeminin
 	 * @param firstName
@@ -53,10 +53,11 @@ public class FrenchFirstNameReader {
 			yearInt = 0;
 	    }
 		if ( yearInt > 0 ) {
-			sb.append("Pendant l'année ");
+			sb.append("Pendant l'année <START:date> ");
 			sb.append(String.valueOf(yearInt));
+			sb.append(" <END> ");
 		} else {
-			sb.append("Pendant l'année 2026");
+			sb.append("Pendant l'année <START:date> 2026 <END> ");
 		}
 		sb.append(", le prénom ");
 		if ( MasculinFeminin.equalsIgnoreCase("1") ) {
@@ -84,7 +85,7 @@ public class FrenchFirstNameReader {
 	    }
 		if ( countInt > 0 ) {
 			sb.append("fut attribué ");
-			sb.append(String.valueOf( countInt ));
+			sb.append(countString);
 			sb.append(" fois.");
 		} else {
 			sb.append("ne fut jamais attribué.");

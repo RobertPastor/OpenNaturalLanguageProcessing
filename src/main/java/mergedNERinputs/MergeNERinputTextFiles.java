@@ -50,6 +50,7 @@ public class MergeNERinputTextFiles {
 				}
 			});
 		}
+		logger.info("Text files are merged correctly -> " + this.frenchNERoutputFilePath.toString());
 		writer.close();
 	}
 
