@@ -3,6 +3,7 @@ package namedEntityRecognition;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -38,7 +39,7 @@ public class TestNamedEntityRecognition {
         list.sort(Entry.comparingByValue());
 
         // Create a LinkedHashMap to preserve insertion order
-        Map<String, Integer> result = new LinkedHashMap<>();
+        Map<String, Integer> result = new LinkedHashMap<String,Integer>();
         for (Entry<String, Integer> entry : list) {
             result.put(entry.getKey(), entry.getValue());
         }
@@ -107,6 +108,10 @@ public class TestNamedEntityRecognition {
 			// sort the map according to count of occurrences
 			Map<String, Integer> sortedPersonCounterMap = sortByValue(personCounterMap);
 			// show occurrences
+			for (Map.Entry<String, Integer> entry : sortedPersonCounterMap.entrySet()) {
+				  System.out.println(entry.getKey() + "/" + entry.getValue());
+			}
+			
 			sortedPersonCounterMap.forEach ( (token , count) -> {
 				logger.info( "token -> " + token + " -> count -> " + String.valueOf(count));
 			});
