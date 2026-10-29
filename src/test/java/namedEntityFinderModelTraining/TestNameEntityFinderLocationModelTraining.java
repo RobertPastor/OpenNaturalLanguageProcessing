@@ -46,7 +46,7 @@ private static final Logger logger = Logger.getLogger(TestNameEntityFinderLocati
 			String frenchNERinputFileName = "outputNERmergedTextFile.txt";
 			String resourceDirectoryString = "mergedNERinputs";
 			
-			Path resourceDirectory = Paths.get("src","test","resources",resourceDirectoryString);
+			Path resourceDirectory = Paths.get("src","test","resources", resourceDirectoryString);
 			Path frenchNERinputFilePath = resourceDirectory.resolve(frenchNERinputFileName);
 			
 			File trainingFile = frenchNERinputFilePath.toFile();

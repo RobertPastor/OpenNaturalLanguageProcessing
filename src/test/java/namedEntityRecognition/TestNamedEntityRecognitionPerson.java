@@ -23,9 +23,9 @@ import opennlp.tools.tokenize.TokenizerModel;
 import opennlp.tools.util.Span;
 
 
-public class TestNamedEntityRecognition {
+public class TestNamedEntityRecognitionPerson {
 
-	private static final Logger logger = Logger.getLogger(TestNamedEntityRecognition.class.getName());
+	private static final Logger logger = Logger.getLogger(TestNamedEntityRecognitionPerson.class.getName());
 	
 	 /**
      * Sorts a Map<String, Integer> by its values in ascending order.
@@ -76,8 +76,8 @@ public class TestNamedEntityRecognition {
 			TokenizerME tokenizerME = new TokenizerME(tokenizerModel);
 	
 			// Named Entity Recognition
-			InputStream nameEntityRecogIn = getClass().getResourceAsStream("/models/fr-ner-train-person.bin");
-			TokenNameFinderModel nameFinderModel = new TokenNameFinderModel(nameEntityRecogIn);
+			InputStream nameEntityRecognitionIn = getClass().getResourceAsStream("/models/fr-ner-train-person.bin");
+			TokenNameFinderModel nameFinderModel = new TokenNameFinderModel(nameEntityRecognitionIn);
 			NameFinderME nameFinderME = new NameFinderME(nameFinderModel);
 			
 			//List<Span> spans = Arrays.asList(nameFinderME.find(tokens));
@@ -107,7 +107,7 @@ public class TestNamedEntityRecognition {
 			// close streams
 			sentenceInputStream.close();
 			tokenizerModelIn.close();
-			nameEntityRecogIn.close();
+			nameEntityRecognitionIn.close();
 			
 			// sort the map according to count of occurrences
 			Map<String, Integer> sortedPersonCounterMap = sortByValue(personCounterMap);
@@ -115,7 +115,7 @@ public class TestNamedEntityRecognition {
 			int max = 50;
 			int index = 0;
 			for (Map.Entry<String, Integer> entry : sortedPersonCounterMap.entrySet()) {
-				index = index +1 ;
+				index = index + 1 ;
 				if ( index < max ) {
 					System.out.println("person -> " + entry.getKey() + " - " + entry.getValue());
 				}
