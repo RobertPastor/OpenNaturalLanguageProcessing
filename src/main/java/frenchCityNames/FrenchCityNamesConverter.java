@@ -87,7 +87,7 @@ public class FrenchCityNamesConverter {
 
 
 	/**
-	 * sexe;preusuel;annais;nombre
+	 * Zuydcoote,59,Nord,Hauts-de-France
 	 * @throws IOException 
 	 */
 	public void convertCsvData( final String outputFileName ) throws IOException {
